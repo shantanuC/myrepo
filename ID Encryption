@@ -1,0 +1,42 @@
+''' This program is for encrypting and decrypting numbers such as Customer or User IDs'''
+class Crypt:
+    def __init__(self):
+        # Step 1: Input a number
+        self.number = input("Please enter a number you want to encrypt?: ")
+        self.encrypted = self.Encryption(self.number)
+        print("Encrypted Number is: " + str(self.encrypted))
+        self.option = input("Would you like to decrypt the number? (yes/no): ")
+        if self.option == 'yes':
+            self.decrypted = self.Decryption(self.encrypted)
+            print("Decrypted Number is: " + str(self.decrypted))
+        else:
+            print("Thank You for your cooperation")
+    
+    def Encryption(self, numberencryption):
+        # Step 2: Break the number into individual digits
+        self.number_digitized =  str(numberencryption)
+        self.encrypt_number = [0] * len(self.number_digitized)
+        for i in range(0, len(self.number_digitized)):
+            # Step 3: For each digit add 5 to the digit and perform modulo by 10 operation on it
+            self.encrypt_number[i] = str((int(self.number_digitized[i]) + 5)%10)
+        
+        # Step 4: Join the digits together to construct the encrypted number
+        self.encryptednumber = int("".join(list(self.encrypt_number)))
+        return self.encryptednumber
+    
+    def Decryption(self, numberdecryption):
+        # Step 2: Break the number into individual digits
+        self.number_digitized =  str(numberdecryption)
+        self.decrypt_number = [0] * len(self.number_digitized)
+        for i in range(0, len(self.number_digitized)):
+            # Step 3: For each digit add 5 to the digit and perform modulo by 10 operation on it
+            self.decrypt_number[i] = str((int(self.number_digitized[i]) + 5)%10)
+        
+        # Step 4: Join the digits together to construct the encrypted number
+        self.decryptednumber = int("".join(list(self.decrypt_number)))
+        return self.decryptednumber
+    
+
+if __name__ == "__main__":
+    cryptic = Crypt()
+    
